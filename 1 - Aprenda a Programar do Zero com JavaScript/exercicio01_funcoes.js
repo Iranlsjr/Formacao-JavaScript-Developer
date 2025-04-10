@@ -34,11 +34,12 @@ function classificarImc(imc) {
     }
 }
 
-function main(){
+// Main
+(function (){
     let peso = 905;
     let altura = 1.75;
     const imc = calcularImc(peso, altura);
     
     console.log("Seu IMC é de: " + imc.toFixed(2) + classificarImc());
-}
-main()
+}) ();
+
