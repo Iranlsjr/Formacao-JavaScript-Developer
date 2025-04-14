@@ -17,29 +17,28 @@
 //                  Saída:
 //                      2050.00
 
-const {gets, print} = require('./funcoes-auxiliares.js');
+const { gets, print } = require("./funcoes-auxiliares-transferir.js");
 
 const salarioBruto = gets();
 const beneficiosAdicionais = gets();
 
-function calcularPercentual(valor, percentual){
-    return valor *(percentual / 100);
+function calcularPercentual(valor, percentual) {
+  return valor * (percentual / 100);
 }
 
-function pegarAliquota (salario){
-    
-    if(salario >= 0 && salario <= 1100){
-        return 5;
-    }  else if(salario >= 1100.01 && salario <=2500){
-        return 10;
-    } else {
-        return 15;
-    }
+function pegarAliquota(salario) {
+  if (salario >= 0 && salario <= 1100) {
+    return 5;
+  } else if (salario >= 1100.01 && salario <= 2500) {
+    return 10;
+  } else {
+    return 15;
+  }
 }
 
-const aliquotaImposto =  pegarAliquota(salarioBruto);
+const aliquotaImposto = pegarAliquota(salarioBruto);
 const valorImposto = calcularPercentual(salarioBruto, aliquotaImposto);
 
-const valorATransferir  = salarioBruto - valorImposto + beneficiosAdicionais;
+const valorATransferir = salarioBruto - valorImposto + beneficiosAdicionais;
 
 print(valorATransferir.toFixed(2));
