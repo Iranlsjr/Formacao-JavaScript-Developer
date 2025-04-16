@@ -24,16 +24,18 @@ function convertPokemonToHLi(pokemon) {
 
 const pokemonList = document.getElementById("pokemonList");
 
-pokeApi.getPokemons().then((pokemons) => {
-  const listItems = [];
+pokeApi.getPokemons().then((pokemons  = []) => {
+    pokemonList.innerHTML += pokemons.map(convertPokemonToHLi).join('')
+
+})
+
+//   const listItems = [];
 
 
-  for (let i = 0; i < pokemons.length; i++) {
-    const pokemon = pokemons[i];
-    listItems.push(convertPokemonToHLi(pokemon));
-  }
-  console.log(listItems);
-});
+//   for (let i = 0; i < pokemons.length; i++) {
+//     const pokemon = pokemons[i];
+//     listItems.push(convertPokemonToHLi(pokemon));
+//   }
 /*.then((jsonBody) => console.log(jsonBody))*/
 /* FUNCTION é o mesmo resultado da funcão de cima.
   .then(function (response) {
