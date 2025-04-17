@@ -1,28 +1,45 @@
-const pokeApi = {};
+// const pokeApi = {};
 
-pokeApi.getPokemonsDetail = (pokemon) => {
-    return fetch(pokemon.url)
-        .then((response) => response.json())
+// function convertPokeApidetailToPokemon(pokeDetail) {
+//     const pokemon = new Pokemon()
+//     pokemon.number = pokeDetail.order
+//     pokemon.name  = pokeDetail.name
 
-}
+//     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
+//     const [type] = types
 
-pokeApi.getPokemons = (offset = 0,limit = 10) => {
-  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
- 
-  return fetch(url)
-  .then((response) => response.json())
-  .then((jsonBody) => jsonBody.results)
-  .then((pokemonList) => pokemonList.map((pokeApi.getPokemonsDetail)))
-  .then((detailRequests) => Promise.all(detailRequests))
-  .then((pokemonsDetails) => pokemonsDetails)
-  .catch((error) => console.log(error))
-}
+//     pokemon.types  = types 
+//     pokemon.type = type
 
-Promise.all([
-    fetch('https://pokeapi.co/api/v2/pokemon/1'),
-    fetch('https://pokeapi.co/api/v2/pokemon/2'),
-    fetch('https://pokeapi.co/api/v2/pokemon/3'),
-    fetch('https://pokeapi.co/api/v2/pokemon/4')
-]).then((results) => {
-    console.log(results)
-})
+//     pokemon.photo = pokeDetail.sprintes.other.dream_world.front_default
+
+//     return pokemon
+// }
+
+// pokeApi.getPokemonsDetail = (pokemon) => {
+//   return fetch(pokemon.url)
+//     .then((response) => response.json())
+//     .then(convertPokeApidetailToPokemon)
+// }
+
+// pokeApi.getPokemons = (offset = 0, limit = 10) => {
+//   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+
+//   return fetch(url)
+//     .then((response) => response.json())
+//     .then((jsonBody) => jsonBody.results)
+//     .then((pokemonList) => pokemonList.map(pokeApi.getPokemonsDetail))
+//     .then((detailRequests) => Promise.all(detailRequests))
+//     .then((pokemonsDetails) => pokemonsDetails)
+// }
+
+// Promise.all([
+//   fetch("https://pokeapi.co/api/v2/pokemon/1"),
+//   fetch("https://pokeapi.co/api/v2/pokemon/2"),
+//   fetch("https://pokeapi.co/api/v2/pokemon/3"),
+//   fetch("https://pokeapi.co/api/v2/pokemon/4"),
+// ]).then((results) => {
+//   console.log(results);
+// });
+
+
