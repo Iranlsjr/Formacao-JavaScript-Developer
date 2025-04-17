@@ -1,45 +1,52 @@
-// const pokeApi = {};
+// Consumo da API
+const pokeApi = {};
 
-// function convertPokeApidetailToPokemon(pokeDetail) {
-//     const pokemon = new Pokemon()
-//     pokemon.number = pokeDetail.order
-//     pokemon.name  = pokeDetail.name
+pokeApi.getPokemons = () => {
+  //Fetch  API - Biblioteca - PASSO 3
+  const offset = 0;
+  const limit = 10;
+  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
-//     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
-//     const [type] = types
+  //Fazer requisição - Promise OPÇÃO 2 Arrow Function - Para reduzir o código PASSO 4
+  return (
+    fetch(url)
+      //Converter Body ReadableStream para Json
+      .then((response) => response.json())
 
-//     pokemon.types  = types 
-//     pokemon.type = type
+      //Retorno do Json, pegar o resultado  da lista  do Json
+      .then((jsonBody) => jsonBody.results)
+      /*.then((jsonBody) => console.log(jsonBody))*/
+      //Caso haja algum erro na requisição
+      .catch((error) => console.log(error))
+      //Informar que  a requisição foi concluída independe de erro ou não
+      .finally(() => console.log("Requisição concluída."))
+  );
+};
 
-//     pokemon.photo = pokeDetail.sprintes.other.dream_world.front_default
+//-----------------------------------------------------------------------------------------------------------------------
+//Fazer requisição - Promise OPÇÃO 1 - Declarativa convencional -Callback PASSO 4
 
-//     return pokemon
-// }
+// fetch(url)
+//Converter Body ReadableStream para Json
+// .then(function (response) {
+//   return response.json();
+// })
+//-----------------------------------------------------------------------------------------------------------------------
 
-// pokeApi.getPokemonsDetail = (pokemon) => {
-//   return fetch(pokemon.url)
-//     .then((response) => response.json())
-//     .then(convertPokeApidetailToPokemon)
-// }
+//Retorno do Json
+// .then(function (jsonBody) {
+//   console.log(jsonBody);
+// })
+//-----------------------------------------------------------------------------------------------------------------------
 
-// pokeApi.getPokemons = (offset = 0, limit = 10) => {
-//   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+//Caso haja algum erro na requisição
+// .catch(function (error) {
+//   console.log(error);
+// })
+//-----------------------------------------------------------------------------------------------------------------------
 
-//   return fetch(url)
-//     .then((response) => response.json())
-//     .then((jsonBody) => jsonBody.results)
-//     .then((pokemonList) => pokemonList.map(pokeApi.getPokemonsDetail))
-//     .then((detailRequests) => Promise.all(detailRequests))
-//     .then((pokemonsDetails) => pokemonsDetails)
-// }
-
-// Promise.all([
-//   fetch("https://pokeapi.co/api/v2/pokemon/1"),
-//   fetch("https://pokeapi.co/api/v2/pokemon/2"),
-//   fetch("https://pokeapi.co/api/v2/pokemon/3"),
-//   fetch("https://pokeapi.co/api/v2/pokemon/4"),
-// ]).then((results) => {
-//   console.log(results);
+//Informar que  a requisição foi concluída independe de erro ou não
+// .finally(function () {
+//   console.log("Requisição concluída.");
 // });
-
-
+//-------------------------------------------------------------------------------------------------
