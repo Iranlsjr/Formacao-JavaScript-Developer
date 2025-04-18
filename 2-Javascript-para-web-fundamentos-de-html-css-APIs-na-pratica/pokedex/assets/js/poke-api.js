@@ -1,10 +1,15 @@
 // Consumo da API
 const pokeApi = {};
 
+// Incluindo Detalhes do Pokemon FUNCTION
+pokeApi.getPokemonDetails = (pokemonsListDetails) => {
+  return fetch(pokemonsListDetails.url).then((response) => response.json());
+};
+
 pokeApi.getPokemons = () => {
   //Fetch  API - Biblioteca - PASSO 3
   const offset = 0;
-  const limit = 10;
+  const limit = 11;
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
   //Fazer requisição - Promise OPÇÃO 2 Arrow Function - Para reduzir o código PASSO 4
@@ -15,7 +20,14 @@ pokeApi.getPokemons = () => {
 
       //Retorno do Json, pegar o resultado  da lista  do Json
       .then((jsonBody) => jsonBody.results)
-      /*.then((jsonBody) => console.log(jsonBody))*/
+
+      // Incluindo Detalhes do Pokemon retorno da function pokeApi.getPokemonDetails
+      .then((pokemonsListDetails) =>
+        pokemonsListDetails.map(pokeApi.getPokemonDetails)
+      )
+      .then((detailRequests) => Promise.all(detailRequests))
+      .then((pokemonsDatails) => pokemonsDatails)
+
       //Caso haja algum erro na requisição
       .catch((error) => console.log(error))
       //Informar que  a requisição foi concluída independe de erro ou não

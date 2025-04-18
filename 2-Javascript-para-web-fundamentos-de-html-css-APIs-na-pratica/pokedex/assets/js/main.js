@@ -1,17 +1,23 @@
+// Lista de tipos - Detalhes do Pokemon- Function
+function convertPokemonTypesToLi(pokemonTypes) {
+  return pokemonTypes.map(
+    (typeSlot) => `<li class="type">${typeSlot.type.name}</li>`,    
+  );
+}
+
 //  Transformando a lista de Pokémon em uma lista de HTML - PASSO 1
 function convertPokemonToHtml(pokemon) {
   return `       
     <li class="pokemon">
-          <span class="number">#001</span>
+          <span class="number">#${pokemon.id}</span>
           <span class="name">${pokemon.name}</span>
 
           <div class="detail">
             <ol class="types">
-              <li class="type">grass</li>
-              <li class="type">poison</li>
+            ${convertPokemonTypesToLi(pokemon.types).join('')}
             </ol>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+              src="${pokemon.sprites.other.dream_world.front_default}"
               alt="Imagem do pokemom ${pokemon.name}"
             />
           </div>
@@ -22,14 +28,13 @@ function convertPokemonToHtml(pokemon) {
 const pokemonListHtmlToLi = document.getElementById("pokemonListHtml");
 
 // Function vindo do arquivo poki-api.js
-pokeApi.getPokemons()
- //Resultado da lista de pokemon
+pokeApi
+  .getPokemons()
+  //Resultado da lista de pokemon
   .then((pokemonList = []) => {
-
-    //Aplicando MAP manipulação  de lista transformada 
-    pokemonListHtmlToLi.innerHTML += pokemonList.map(convertPokemonToHtml).join('')
-
-
+    //Aplicando MAP manipulação  de lista transformada
+    const newHtml = pokemonList.map(convertPokemonToHtml).join("");
+    pokemonListHtmlToLi.innerHTML = newHtml;
 
     //Criando uma nova  lista
     //const listItems  = []
