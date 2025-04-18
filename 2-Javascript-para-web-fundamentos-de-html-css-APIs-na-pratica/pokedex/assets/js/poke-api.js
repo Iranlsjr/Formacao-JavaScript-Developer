@@ -6,10 +6,8 @@ pokeApi.getPokemonDetails = (pokemonsListDetails) => {
   return fetch(pokemonsListDetails.url).then((response) => response.json());
 };
 
-pokeApi.getPokemons = () => {
+pokeApi.getPokemons = (offset = 0, limit = 5) => {
   //Fetch  API - Biblioteca - PASSO 3
-  const offset = 0;
-  const limit = 3;
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
   //Fazer requisição - Promise OPÇÃO 2 Arrow Function - Para reduzir o código PASSO 4
