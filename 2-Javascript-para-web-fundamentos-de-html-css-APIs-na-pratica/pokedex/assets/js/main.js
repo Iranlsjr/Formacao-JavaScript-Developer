@@ -22,22 +22,23 @@ function convertPokemonToHtml(pokemon) {
 const pokemonListHtmlToLi = document.getElementById("pokemonListHtml");
 
 // Function vindo do arquivo poki-api.js
-pokeApi
-  .getPokemons()
-  //Resultado da lista de pokemon
-  .then((pokemonList) => {
-    //Criando uma nova  lista
-    const listItems  = []
+pokeApi.getPokemons()
+ //Resultado da lista de pokemon
+  .then((pokemonList = []) => {
 
     //Aplicando MAP manipulação  de lista transformada 
-    pokemonList.map()
+    pokemonListHtmlToLi.innerHTML += pokemonList.map(convertPokemonToHtml).join('')
 
+
+
+    //Criando uma nova  lista
+    //const listItems  = []
     // Chamando a Lista de pokemon ToHtml com FOR - PASSSO 5
-    for (let i = 0; i < pokemonList.length; i++) {
-      const pokemon = pokemonList[i];
-      // Adicionando um item - PASSO 6
-      listItems.push(convertPokemonToHtml(pokemon))
-      //console.log(convertPokemonToHtml(pokemon))
-    }
-    console.log(listItems)
+    // for (let i = 0; i < pokemonList.length; i++) {
+    //   const pokemon = pokemonList[i];
+    //   // Adicionando um item - PASSO 6
+    //   listItems.push(convertPokemonToHtml(pokemon))
+    //   //console.log(convertPokemonToHtml(pokemon))
+    // }
+    //console.log(listItems)
   });
