@@ -40,13 +40,18 @@
 /*Ícone Arrow   Aberto*/
 .acordeon.open .trigger::after {
   transform: rotate(180deg);
-  
 }
 /*ACORDEON ABERTO*/
 .acordeon .content {
-    display: inline-block;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
 }
 /*Mostrar conteudo*/
 .acordeon.open .content {
-    display: none;
+  display: block;
+  padding: 0 1rem 1rem 2rem;
+  height: auto;
+  opacity: 1;
 }
