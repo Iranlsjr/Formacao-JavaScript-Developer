@@ -25,6 +25,11 @@
   font-weight: 700;
   cursor: pointer;
 }
+.acordeon .trigger h2{
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: start;
+}
 /*------------------------------------*/
 
 /* Ícone Arrow*/
@@ -35,6 +40,7 @@
   height: 1.5rem;
   background-image: url(/assets/img/icons8-para-cima-com-quadrado-50.png);
   background-size: contain;
+  background-repeat: no-repeat;
   transition: 0.7s;
 }
 /*Ícone Arrow   Aberto*/
