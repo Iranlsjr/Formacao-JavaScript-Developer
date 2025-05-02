@@ -64,15 +64,22 @@ function getAllData() {
 <p>Following:</p>${USER.following}</div>
 
       </div>
-      ${USER.repos.map(
-        (repo) => `<div  class="repo">
+      ${USER.repos
+        .map(
+          (repo) => `<div  class="repo">
         <h3 class="repo-name">${repo.name}</h3>
         <p class="repo-description">"${repo.description}</p>
         <p class="repo-language">${repo.language}</p>
         <div class="repo-stats">
         <span>${repo.stargazers_count}</span>
+        <span>${repo.watchers_count}</span>
+        <span>${repo.forks_count}</span>
+        <span>${new Date(repo.update_at).toLocaleDateString("pt-br")}</span>
         </div>
+        <a href="${repo.html_url}" target="_blank">
+        <span>${repo.html_url}</span>
         </div>`
-      )}
+        )
+        .join("")}
   `;
 }
