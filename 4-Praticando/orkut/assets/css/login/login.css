@@ -6,10 +6,7 @@
   --bd-silver: #a4a4a4;
 }
 
-body {
-  background-color: var(--bg-color);
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-}
+
 .logo {
   display: flex;
   justify-content: center;
@@ -34,9 +31,7 @@ body {
 .fields {
   margin: 1.25rem 1.875rem;
 }
-.pink-font {
-  color: var(--color-pink);
-}
+
 .fields__title {
   display: flex;
   justify-content: center;
@@ -66,12 +61,10 @@ body {
 #btnlogin {
   width: 100%;
   border: none;
-  background-color: var(--color-pink);
   color: var(--white);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  cursor: pointer;
 }
 .fields__recovery > a,
 .fields__create > a {

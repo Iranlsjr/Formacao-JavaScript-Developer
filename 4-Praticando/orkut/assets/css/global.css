@@ -1,0 +1,27 @@
+:root {
+  --bg-color: #f0c9ea;
+  --white: #fff;
+  --color-pink: #e8258e;
+  --dark-grey: #676767;
+  --bd-silver: #a4a4a4;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+.orkut-font-color {
+  color: var(--color-pink);
+}
+.orkut-font-default {
+  color: var(--dark-grey);
+}
+.orkut-link{
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.orkut-button-bg {
+  background-color: var(--color-pink);
+  cursor: pointer;
+}
